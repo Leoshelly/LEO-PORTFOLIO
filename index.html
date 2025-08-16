@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fallback for Font Awesome -->
+    <script>
+        // Check if Font Awesome loaded
+        window.addEventListener('load', function() {
+            if (!document.querySelector('.fa-hospital-alt')) {
+                console.warn('Font Awesome not loaded, using fallback icons');
+                // Replace Font Awesome icons with text fallbacks
+                const icons = document.querySelectorAll('.fas, .fab');
+                icons.forEach(icon => {
+                    const fallback = icon.className.includes('hospital-alt') ? '🏥' : 
+                                   icon.className.includes('check-circle') ? '✓' :
+                                   icon.className.includes('map-marker-alt') ? '📍' :
+                                   icon.className.includes('phone') ? '📞' :
+                                   icon.className.includes('envelope') ? '✉️' :
+                                   icon.className.includes('graduation-cap') ? '🎓' :
+                                   icon.className.includes('certificate') ? '📜' :
+                                   icon.className.includes('google') ? '🔍' :
+                                   icon.className.includes('phone-alt') ? '📱' : '•';
+                    icon.textContent = fallback;
+                    icon.className = 'fallback-icon';
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- Navigation -->

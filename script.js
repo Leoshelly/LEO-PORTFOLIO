@@ -1,5 +1,7 @@
 // Navigation and Scroll Effects
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Starting initialization...'); // Debug log
+    
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -98,8 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Add animation classes to elements
 function addAnimationClasses() {
+    console.log('Adding animation classes...'); // Debug log
+    
     // Timeline items
     const timelineItems = document.querySelectorAll('.timeline-item');
+    console.log('Found timeline items:', timelineItems.length); // Debug log
     timelineItems.forEach((item, index) => {
         if (index % 2 === 0) {
             item.classList.add('slide-in-left');
@@ -110,12 +115,14 @@ function addAnimationClasses() {
 
     // Skill categories
     const skillCategories = document.querySelectorAll('.skill-category');
+    console.log('Found skill categories:', skillCategories.length); // Debug log
     skillCategories.forEach(category => {
         category.classList.add('fade-in');
     });
 
     // Education items
     const educationItems = document.querySelectorAll('.education-item');
+    console.log('Found education items:', educationItems.length); // Debug log
     educationItems.forEach(item => {
         item.classList.add('fade-in');
     });
@@ -123,8 +130,14 @@ function addAnimationClasses() {
     // About content
     const aboutText = document.querySelector('.about-text');
     const aboutContact = document.querySelector('.about-contact');
-    if (aboutText) aboutText.classList.add('slide-in-left');
-    if (aboutContact) aboutContact.classList.add('slide-in-right');
+    if (aboutText) {
+        aboutText.classList.add('slide-in-left');
+        console.log('Added slide-in-left to about-text'); // Debug log
+    }
+    if (aboutContact) {
+        aboutContact.classList.add('slide-in-right');
+        console.log('Added slide-in-right to about-contact'); // Debug log
+    }
 }
 
 // Highlight active navigation link based on scroll position
@@ -416,3 +429,191 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+// ===== 3D TILT EFFECTS =====
+function init3DTiltEffects() {
+    const tiltElements = document.querySelectorAll('.timeline-content, .skill-category, .education-item, .about-contact, .contact-form');
+    
+    tiltElements.forEach(element => {
+        element.addEventListener('mousemove', handleTilt);
+        element.addEventListener('mouseleave', resetTilt);
+    });
+}
+
+function handleTilt(e) {
+    const element = e.currentTarget;
+    const rect = element.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    
+    element.style.transform = `
+        translateY(-10px) 
+        rotateX(${rotateX}deg) 
+        rotateY(${rotateY}deg)
+        scale(1.02)
+    `;
+    
+    // Add dynamic shadow based on mouse position
+    const shadowX = (x - centerX) / 10;
+    const shadowY = (y - centerY) / 10;
+    
+    element.style.boxShadow = `
+        ${shadowX}px ${shadowY}px 20px rgba(0, 0, 0, 0.1),
+        0 15px 20px rgba(37, 99, 235, 0.1),
+        0 0 0 1px rgba(37, 99, 235, 0.1)
+    `;
+}
+
+function resetTilt(e) {
+    const element = e.currentTarget;
+    element.style.transform = 'translateY(0) rotateX(0) rotateY(0) scale(1)';
+    element.style.boxShadow = '';
+}
+
+// ===== PARALLAX MOUSE EFFECT =====
+function initParallaxMouse() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const moveX = (x - centerX) / 50;
+        const moveY = (y - centerY) / 50;
+        
+        const heroGraphic = hero.querySelector('.hero-graphic');
+        if (heroGraphic) {
+            heroGraphic.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        }
+    });
+}
+
+// ===== MAGNETIC BUTTONS =====
+function initMagneticButtons() {
+    const buttons = document.querySelectorAll('.btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translate(0, 0) scale(1)';
+        });
+    });
+}
+
+// ===== SKILL ITEMS WAVE EFFECT =====
+function initSkillWaveEffect() {
+    const skillItems = document.querySelectorAll('.skill-item');
+    
+    skillItems.forEach((item, index) => {
+        item.addEventListener('mouseenter', () => {
+            // Create wave effect for adjacent items
+            const delay = index * 50;
+            item.style.animation = `skillWave 0.6s ease ${delay}ms`;
+        });
+        
+        item.addEventListener('animationend', () => {
+            item.style.animation = '';
+        });
+    });
+}
+
+// ===== TIMELINE PROGRESS ANIMATION =====
+function initTimelineProgress() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const item = entry.target;
+                item.style.animation = 'timelineSlideIn 0.8s ease forwards';
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    timelineItems.forEach(item => observer.observe(item));
+}
+
+// ===== COUNTER ANIMATION WITH BOUNCE =====
+function initBouncyCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                const suffix = counter.textContent.replace(/[0-9]/g, '');
+                
+                animateCounterWithBounce(counter, target, suffix);
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounterWithBounce(counter, target, suffix) {
+    let current = 0;
+    const increment = target / 50;
+    
+    const updateCounter = () => {
+        if (current < target) {
+            current += increment;
+            counter.textContent = Math.floor(current) + suffix;
+            
+            // Add bounce effect
+            counter.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                counter.style.transform = 'scale(1)';
+            }, 100);
+            
+            requestAnimationFrame(updateCounter);
+        } else {
+            counter.textContent = target + suffix;
+            counter.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                counter.style.transform = 'scale(1)';
+            }, 200);
+        }
+    };
+    
+    updateCounter();
+}
+
+// ===== INITIALIZE ALL 3D EFFECTS =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize existing features
+    lazyLoadImages();
+    initThemeToggle();
+    initSearch();
+    optimizeForPrint();
+    
+    // Initialize new 3D effects
+    setTimeout(() => {
+        init3DTiltEffects();
+        initParallaxMouse();
+        initMagneticButtons();
+        initSkillWaveEffect();
+        initTimelineProgress();
+        initBouncyCounters();
+    }, 1000);
+});

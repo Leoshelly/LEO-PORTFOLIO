@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Effects Demo - Leo Shelly Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .demo-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 1rem;
+            border: 2px solid #e2e8f0;
+        }
+        .demo-title {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .demo-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .demo-icon {
+            font-size: 3rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        .effect-description {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Back to Portfolio</a>
+    
+    <div class="demo-container">
+        <h1 class="demo-title">🎨 3D Effects & Animations Demo</h1>
+        <p style="text-align: center; color: #6b7280; margin-bottom: 3rem; font-size: 1.2rem;">
+            Hover over the cards below to see the amazing 3D effects in action!
+        </p>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🚀 Interactive 3D Effects</h2>
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <div class="demo-icon">🎯</div>
+                    <h3>3D Card Lift</h3>
+                    <p class="effect-description">
+                        Cards lift up with realistic 3D rotation and dynamic shadows based on mouse position.
+                    </p>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-icon">✨</div>
+                    <h3>Gradient Borders</h3>
+                    <p class="effect-description">
+                        Beautiful animated gradient borders that appear on hover with smooth transitions.
+                    </p>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-icon">🌟</div>
+                    <h3>Shimmer Effects</h3>
+                    <p class="effect-description">
+                        Elegant shimmer animations that sweep across elements when you hover over them.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🎭 Advanced Animations</h2>
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <div class="demo-icon">🎪</div>
+                    <h3>Floating Cards</h3>
+                    <p class="effect-description">
+                        Subtle floating animations that make cards feel alive and engaging.
+                    </p>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-icon">💫</div>
+                    <h3>Pulse Glow</h3>
+                    <p class="effect-description">
+                        Dynamic glow effects that pulse and animate to draw attention to interactive elements.
+                    </p>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-icon">🎨</div>
+                    <h3>Wave Effects</h3>
+                    <p class="effect-description">
+                        Smooth wave animations that ripple through skill items and navigation elements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🎮 Interactive Features</h2>
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <div class="demo-icon">🖱️</div>
+                    <h3>Mouse Parallax</h3>
+                    <p class="effect-description">
+                        Hero section elements move in response to mouse movement for immersive interaction.
+                    </p>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-icon">🧲</div>
+                    <h3>Magnetic Buttons</h3>
+                    <p class="effect-description">
+                        Buttons that attract to your mouse cursor and respond to movement with smooth animations.
+                    </p>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-icon">📊</div>
+                    <h3>Bouncy Counters</h3>
+                    <p class="effect-description">
+                        Statistics counters that animate with bounce effects when they come into view.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🎯 Portfolio Elements</h2>
+            <div class="demo-grid">
+                <div class="timeline-content">
+                    <h3>Timeline Card</h3>
+                    <p>This demonstrates the 3D hover effects used in the experience timeline.</p>
+                    <div class="timeline-tech">
+                        <span class="tech-tag">3D Effect</span>
+                        <span class="tech-tag">Hover</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Skills Card</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">3D Animation</span>
+                        <span class="skill-item">CSS Effects</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education Card</h3>
+                    <p>Shows the floating and 3D effects used in education section.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🎨 Try the Effects</h2>
+            <div style="text-align: center;">
+                <p style="color: #6b7280; margin-bottom: 2rem;">
+                    Now go back to the main portfolio and experience all these effects in action!
+                </p>
+                <a href="index.html" class="btn btn-primary" style="font-size: 1.2rem; padding: 1rem 2rem;">
+                    🚀 View Full Portfolio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive demo effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoCards = document.querySelectorAll('.demo-card');
+            
+            demoCards.forEach((card, index) => {
+                // Add staggered animation delay
+                card.style.animationDelay = `${index * 0.2}s`;
+                
+                // Add 3D tilt effect
+                card.addEventListener('mousemove', function(e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 15;
+                    const rotateY = (centerX - x) / 15;
+                    
+                    card.style.transform = `
+                        translateY(-10px) 
+                        rotateX(${rotateX}deg) 
+                        rotateY(${rotateY}deg)
+                        scale(1.02)
+                    `;
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    card.style.transform = 'translateY(0) rotateX(0) rotateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
